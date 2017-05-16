@@ -104,16 +104,17 @@ class UsersController extends Controller
     {
         $view = 'emails.confirm';
         $data = compact('user');
-        $from = 'aufree@estgroupe.com';
-        $name = 'Aufree';
+        $from = 'ddasd2001@163.com';
+        $name = 'TongQue_Game';
         $to = $user->email;
-        $subject = "感谢注册 Sample 应用！请确认你的邮箱。";
+        $subject = "感谢注册 TongQue_Game！请确认你的邮箱。";
 
         Mail::send($view, $data, function ($message) use ($from, $name, $to, $subject) {
             $message->from($from, $name)->to($to)->subject($subject);
         });
     }
 
+    //激活成功
     public function confirmEmail($token)
     {
         $user = User::where('activation_token', $token)->firstOrFail();

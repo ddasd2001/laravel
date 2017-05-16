@@ -2,7 +2,7 @@
 <html>
 <head>
     <title>@yield('title', '')-铜雀游戏管理后台</title>
-    <link href="/laravel/public/favicon.ico" rel="shortcut icon" />
+    <link rel="shortcut icon" href="/laravel/public/favicon.ico">
     <link rel="stylesheet" href="/laravel/public/css/app.css">
 </head>
 <body>
