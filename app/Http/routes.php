@@ -33,3 +33,6 @@ post('password/reset', 'Auth\PasswordController@postReset')->name('password.upda
 
 //微博创建删除
 resource('statuses', 'StatusesController', ['only' => ['store', 'destroy']]);
+
+//TEST测试
+get('test', 'TestController@index')->name('test.index');

@@ -24,7 +24,7 @@ class User extends Model implements AuthenticatableContract,
     protected $table = 'users';
 
     /**
-     * The attributes that are mass assignable.
+     * 定义好哪些模型属性是可以被批量赋值的
      *
      * @var array
      */
