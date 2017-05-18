@@ -35,4 +35,4 @@ post('password/reset', 'Auth\PasswordController@postReset')->name('password.upda
 resource('statuses', 'StatusesController', ['only' => ['store', 'destroy']]);
 
 //TEST测试
-get('test', 'TestController@index')->name('test.index');
+resource('test', 'TestController');
