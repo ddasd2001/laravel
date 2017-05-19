@@ -21,7 +21,7 @@ class TestController extends Controller
 //            'only' => ['index']
 //        ]);
 //    }
-    //显示
+    //查所有。显示所有
     public function index()
     {
         $recorder = Recorder::Paginate(3);
@@ -29,10 +29,23 @@ class TestController extends Controller
 //        print_r($result);
     }
 
+    //查单个。显示一个
     public function show($id)
     {
-        $recorder = Recorder::findOrFail($id);
+
+        $recorder = Recorder::find($id);
         return view('test.show', compact('recorder'));
+    }
+
+    public function create()
+    {
+        return view('test.create');
+    }
+
+    public function edit($id)
+    {
+        $recorder = Recorder::findOrFail($id);
+        return view('test.edit', compact('recorder'));
     }
 
     //删除一条
@@ -42,18 +55,19 @@ class TestController extends Controller
 //        $this->authorize('destroy', $user);
         $recorder->delete();
         session()->flash('success', '删除成功！');
-        return back();
+        return redirect()->route('test.index');
     }
 
-    public function store(Request $request)//处理表单数据提交后的 store 方法。第一个参数为用户的输入数据，第二个参数为该输入数据的验证规则。
+    public function store(Request $request)//新增数据 store 方法。第一个参数为用户的输入数据，第二个参数为该输入数据的验证规则。
     {
         // 验证请求...
         $this->validate($request, [
-            'gameid' => 'required|max:3|integer',
-            'userid' => 'required|max:6|integer',
-            'code' => 'required|integer|integer',
-            'score' => 'required|integer',
+            'gameid' => 'required',
+            'userid' => 'required',
+            'code' => 'required',
+            'score' => 'required',
             'msec' => 'required|max:32',
+            'gametime' => 'required|max:32',
         ]);
 
         $recorder = Recorder::create([
@@ -62,8 +76,35 @@ class TestController extends Controller
             'code' => $request->code,
             'score' => $request->score,
             'msec' => $request->msec,
+            'gametime' =>$request->gametime,
         ]);
         session()->flash('success', '插入成功！');
+        return redirect()->route('test.show', [$recorder]);
+    }
+
+    //修改数据
+    public function update($id, Request $request)
+    {
+        //验证
+        $this->validate($request, [
+            'gameid' => 'required',
+            'userid' => 'required',
+            'code' => 'required',
+            'score' => 'required',
+            'msec' => 'required|max:32',
+            'gametime' => 'required|max:32',
+        ]);
+
+        $recorder = Recorder::find($id);
+        $recorder->update([
+            'gameid' => $request->gameid,
+            'userid' => $request->userid,
+            'code' => $request->code,
+            'score' => $request->score,
+            'msec' => $request->msec,
+            'gametime' =>$request->gametime,
+        ]);
+        session()->flash('success', '资料修改成功！');
         return redirect()->route('test.show', [$recorder]);
     }
 }

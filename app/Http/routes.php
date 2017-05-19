@@ -36,3 +36,4 @@ resource('statuses', 'StatusesController', ['only' => ['store', 'destroy']]);
 
 //TEST测试
 resource('test', 'TestController');
+get('charu', 'TestController@create')->name('charu');//新建数据

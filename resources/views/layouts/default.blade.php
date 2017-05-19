@@ -4,7 +4,8 @@
     <title>@yield('title', '')-铜雀游戏管理后台</title>
     <link rel="shortcut icon" href="/laravel/public/favicon.ico">
     <link rel="stylesheet" href="/laravel/public/css/app.css">
-    <script type="text/javascript" src="/laravel/public/js/jquery.js"></script>
+    <link rel="stylesheet" href="/laravel/public/css/templatemo_main.css">
+
 </head>
 <body>
 @include('layouts._header')

@@ -12643,3 +12643,28 @@ $(document).ready(function () {});
 },{"bootstrap-sass":1,"jquery":2}]},{},[3]);
 
 //# sourceMappingURL=app.js.map
+//btn-modify 这个是编辑按钮的class名
+$('.btn-modify').click(function () {
+    if ($(".checkchild:checked").length > 1)
+    {
+        alert("一次只能修改一条数据");
+        return;
+    }
+    var id = $(".checkchild:checked").val();
+    var initData = {
+        "appendId": "modalRef",//加到哪里去
+        "modalId": "myModal",
+        "title": "修改菜单",
+        "formId": "formEdit", //form的ID
+        "loadUrl": "/Menus/Edit", //如果不从页面加载，写成"null" 
+        "loadParas": { "ID": id },     //向loadUrl传的数据
+        "postUrl": "/BasicManage/Edit", //提交add的url
+        "close": reloadDt, //关闭弹出窗后调用的方法
+        "cols": ""   //[ {"displayName":"菜单名","fieldName":"Name"}]   
+    };
+    whr.setModal(initData);
+});
+
+
+
+

@@ -1,6 +1,5 @@
 @extends('layouts.default')
 @section('title', '注册')
-
 @section('content')
     <div class="col-md-offset-2 col-md-8">
         <div class="panel panel-default">

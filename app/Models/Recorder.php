@@ -20,7 +20,8 @@ class Recorder extends Model implements AuthenticatableContract,
     protected $primaryKey = 'id';//确定主键,不设置的话默认主键ID
     public $timestamps = false;//时间戳#
 //    protected $fillable = ['name', 'email', 'password'];   //可修改的数据
-    protected $guarded = ['id']; //不可修改
+
+    protected $fillable = ['gameid', 'userid', 'code', 'score', 'gametime', 'msec'];
 //    protected $hidden = ['password', 'remember_token'];//隐藏字段
 
 
